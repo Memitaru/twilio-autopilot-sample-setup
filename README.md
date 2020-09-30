@@ -30,8 +30,8 @@ In this sample project we will use only one Function to display dynamic content 
 * You should be good to go. Notice the green tick next to the function name which means the changes have been applied
 * Finally, copy somewhere the URL of the Function (`Copy URL` option) as it will be used later
 
-### Create the TwiML Bin
-In this sample project we use a simple TwiML Bin to simulate the handoff-to-agent functionality.
+### Create the TwiML Bin (For Voice calls handoff)
+In this sample project we use a simple TwiML Bin to simulate the handoff-to-agent functionality. Notice that this functionality is for Voice calls, not messaging.
 
 * Go to https://www.twilio.com/console/twiml-bins and create a new TwiML Bin
 * Paste the following code in, replacing the values in the placeholders. In this case we set our personal number as the "agent" that the call will be sent to, just to prove the handoff flow
@@ -147,6 +147,7 @@ Add your function URI
 
 ### handoff 
 
+As mentioned above, this is only for Voice calls as it is using the handoff Autopilot action which is voice-only: https://www.twilio.com/docs/autopilot/actions/hand-off
 Add your twiml bin url
 ```js
 {
