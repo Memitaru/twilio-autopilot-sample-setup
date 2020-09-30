@@ -166,6 +166,12 @@ Add your twiml bin url
 }
 ```
 
+### Building the model
+After any change, make sure to train the bot so that changes are applied.
+You can very easily do that by clicking `Build Model` on the bottom of the page
+
+![Autopilot main screen](https://i.imgur.com/NEDbEA0.png)
+
 ## Conclusion
 You should have your first working bot with Autopilot! Simply try it out with the Simulator.
 
