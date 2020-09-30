@@ -45,5 +45,12 @@ In this sample project we use a simple TwiML Bin to simulate the handoff-to-agen
 </Response>
 ```
 
-### Import the Bot (optional - via CLI)
+### Create the Bot via JSON (optional - using the Twilio CLI)
 In case you have installed the CLI (recommended), you can directly import the bot.json found in the resources of this repo
+
+Make sure you change the following in the JSON body of the bot:
+* Under tasks -> handoff, replace YOUR_TWIML_BIN value with the actual URL of the TwiML Bin you created above
+* Under tasks -> make_reservation, replace YOUR_FUNCTION_URI value with the actual URL of the Function you created above
+
+Then you can create the bot using the Autopilot CLI
+`twilio autopilot:create -s /path/of/json`
