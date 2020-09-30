@@ -59,4 +59,106 @@ Then you can create the bot using the Autopilot CLI
 You can fully create and manage the bot from the Twilio Console. Here are the steps to start with a basic one:
 
 * Go to https://www.twilio.com/console/autopilot and choose if you will create the Bot via a Template or From Scratch. We will add some tasks either way
-* 
+* Next step is to add some tasks. Simply click `Add Task` for the ones not in your task list and then add the relevant json body. Specifically
+
+### greeting
+Greeting task will already be on your list, so simply edit its code by clicking on `Program`
+
+```js
+{
+	"actions": [
+		{
+			"say": "Welcome to the Mos Eisley Cantina! You will never find a more wretched hive of scum and villainy. I can provide you today’s specials, connect you with a host, or help you make a reservation."
+		},
+		{
+			"listen": true
+		}
+	]
+}
+```
+
+### make_reservation
+
+Add your function URI
+```js
+{
+	"actions": [
+		{
+			"collect": {
+				"name": "make_reservation",
+				"questions": [
+					{
+						"question": {
+							"say": "Great, I can help you with that. What's your first name?"
+						},
+						"name": "first_name",
+						"type": "Twilio.FIRST_NAME"
+					},
+					{
+						"question": {
+							"say": "What day would you like your reservation for?"
+						},
+						"name": "date",
+						"type": "Twilio.DATE"
+					},
+					{
+						"question": {
+							"say": "Nice, at what time?"
+						},
+						"name": "time",
+						"type": "Twilio.TIME"
+					},
+					{
+						"question": {
+							"say": "For how many humans, wookies, droids, jawas, ewoks, life forms?"
+						},
+						"name": "party_size",
+						"type": "Twilio.NUMBER"
+					}
+				],
+				"on_complete": {
+					"redirect": {
+						"method": "POST",
+						"uri": "YOUR_FUNCTION_URI"
+					}
+				}
+			}
+		}
+	]
+}
+```
+
+### todays_specials
+
+```js
+{
+	"actions": [
+		{
+			"say": "Today's specials include: bantha milk, Rootleaf Stew (made from yarum seeds, mushroom spores, galla seeds, and sohli bark on Dagobah), Spice Runner Hard Cider, Klatooine Paddy Frogs, Levitating Shuura (sweet and juicy fruit native to the planet Naboo), jawa juice, and the Cantina Special "
+		},
+		{
+			"listen": true
+		}
+	]
+}
+```
+
+### handoff 
+
+Add your twiml bin url
+```js
+{
+	"actions": [
+		{
+			"say": "Hold on, we are connecting you with Chalmun, owner of the Cantina"
+		},
+		{
+			"handoff": {
+				"method": "POST",
+				"channel": "voice",
+				"uri": "YOUR_TWIML_BIN_URL "
+			}
+		}
+	]
+}
+```
