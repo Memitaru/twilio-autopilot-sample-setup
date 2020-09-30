@@ -23,13 +23,13 @@ We can't wait to see what you build with it!
 In this sample project we will use only one Function to display dynamic content (for example, repeating to the user the booking details after they submit the booking to our bot)
 
 * Go to https://www.twilio.com/console/functions/overview (Note: You are seeing the v2.0 of Functions which at the time of writing is our brand new format!)
-* Click on "Create Service" to create your service that will host your function file (and any other files you want to add later)
-* After you are in the Service page click on "+Add" to add the new Function. You can leave it as "Protected" mode which means that it can be used through Twilio and not externally
-* Copy paste the code from the resources in this repo "handle-booking.js"
-* Click Save and then Deploy All
+* Click on `Create Service` to create your service that will host your function file (and any other files you want to add later)
+* After you are in the Service page click on `+Add` to add the new Function. You can leave it as "Protected" mode which means that it can be used through Twilio and not externally
+* Copy paste the code from the resources in this repo `handle-booking.js`
+* Click `Save` and then `Deploy All`
 * You should have something like the screen below. Notice the green tick next to the function name which means the changes have been applied
 <insert image>
-* Finally, copy somewhere the URL of the Function ("Copy URL" option) as it will be used later
+* Finally, copy somewhere the URL of the Function (`Copy URL` option) as it will be used later
 
 ### Create the TwiML Bin
 In this sample project we use a simple TwiML Bin to simulate the handoff-to-agent functionality.
@@ -46,11 +46,11 @@ In this sample project we use a simple TwiML Bin to simulate the handoff-to-agen
 ```
 
 ### Create the Bot via JSON (optional - using the Twilio CLI)
-In case you have installed the CLI (recommended), you can directly import the bot.json found in the resources of this repo
+In case you have installed the CLI (recommended), you can directly import the `bot.json` found in the resources of this repo
 
 Make sure you change the following in the JSON body of the bot:
-* Under tasks -> handoff, replace YOUR_TWIML_BIN value with the actual URL of the TwiML Bin you created above
-* Under tasks -> make_reservation, replace YOUR_FUNCTION_URI value with the actual URL of the Function you created above
+* Under `tasks` -> `handoff`, replace `YOUR_TWIML_BIN` value with the actual URL of the TwiML Bin you created above
+* Under `tasks` -> `make_reservation`, replace `YOUR_FUNCTION_URI` value with the actual URL of the Function you created above
 
 Then you can create the bot using the Autopilot CLI
 `twilio autopilot:create -s /path/of/json`
