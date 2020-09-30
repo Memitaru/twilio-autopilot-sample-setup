@@ -1,0 +1,404 @@
+{
+    "friendlyName" : "",
+    "logQueries" : true,
+    "uniqueName" : "Mos-Eisley-Cantina",
+    "defaults" : {
+        "defaults" : {
+            "assistant_initiation" : "task://greeting",
+            "fallback" : "task://fallback",
+            "collect" : {
+                "validate_on_failure" : "task://collect_fallback"
+            }
+        }
+    },
+    "styleSheet" : {
+        "style_sheet" : {
+            "collect" : {
+                "validate" : {
+                    "on_failure" : {
+                        "repeat_question" : false,
+                        "messages" : [
+                            {
+                                "say" : {
+                                    "speech" : "I didn't get that. What did you say?"
+                                }
+                            },
+                            {
+                                "say" : {
+                                    "speech" : "I still didn't catch that. Please repeat."
+                                }
+                            },
+                            {
+                                "say" : {
+                                    "speech" : "Let's try one last time. Say it again please."
+                                }
+                            }
+                        ]
+                    },
+                    "on_success" : { "say" : { "speech" : "" } },
+                    "max_attempts" : 4
+                }
+            },
+            "voice" : {
+                "say_voice" : "Polly.Matthew"
+            },
+            "name" : ""
+        }
+    },
+    "fieldTypes" : [],
+    "tasks" : [
+        {
+            "uniqueName" : "todays_specials",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Today's specials include: bantha milk, Rootleaf Stew (made from yarum seeds, mushroom spores, galla seeds, and sohli bark on Dagobah), Spice Runner Hard Cider, Klatooine Paddy Frogs, Levitating Shuura (sweet and juicy fruit native to the planet Naboo), jawa juice, and the Cantina Special "
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "the day's specials"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "today's special"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "most popular dishes"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what is popular"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what do you suggest"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what should i order"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what do you recommend"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what is good"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "specials"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "today's specials"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "handoff",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Hold on, we are connecting you with Chalmun, owner of the Cantina"
+                    },
+                    {
+                        "handoff" : {
+                            "method" : "POST",
+                            "channel" : "voice",
+                            "uri" : "YOUR_TWIML_BIN"
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "please can i talk to someone else"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "could i speak with a human"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "can i talk to the manager"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "i would like to speak with the manager"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "make_reservation",
+            "actions" : {
+                "actions" : [
+                    {
+                        "collect" : {
+                            "on_complete" : {
+                                "redirect" : {
+                                    "method" : "POST",
+                                    "uri" : "YOUR_FUNCTION_URI"
+                                }
+                            },
+                            "name" : "make_reservation",
+                            "questions" : [
+                                {
+                                    "type" : "Twilio.FIRST_NAME",
+                                    "question" : {
+                                        "say" : "Great, I can help you with that. What's your first name?"
+                                    },
+                                    "name" : "first_name"
+                                },
+                                {
+                                    "type" : "Twilio.DATE",
+                                    "question" : {
+                                        "say" : "What day would you like your reservation for?"
+                                    },
+                                    "name" : "date"
+                                },
+                                {
+                                    "type" : "Twilio.TIME",
+                                    "question" : {
+                                        "say" : "Nice, at what time?"
+                                    },
+                                    "name" : "time"
+                                },
+                                {
+                                    "type" : "Twilio.NUMBER",
+                                    "question" : {
+                                        "say" : "For how many humans, wookies, droids, jawas, ewoks, life forms?"
+                                    },
+                                    "name" : "party_size"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "could i plan a reservation please"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "can i reserve a table"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "reserve a table please"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "i would like to make a reservation"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "make a reservation"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "reservation"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "greeting",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Welcome to the Mos Eisley Cantina! You will never find a more wretched hive of scum and villainy. I can provide you today’s specials, connect you with a host, or help you make a reservation."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what can you do"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what do you do"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "what'us up"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "whatsup"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hi!"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hi there."
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "Hello."
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hey"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "heya"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "sup"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hello"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "good morning"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "yo"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "good afternoon"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "hi there"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "Hi"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "goodbye",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Thank you! Please reach out again if you need anything. Goodbye."
+                    }
+                ]
+            },
+            "fields" : [],
+            "samples" : [
+                {
+                    "language" : "en-US",
+                    "taggedText" : "that's all"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "good bye"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "goodnight"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "bye bye"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "goodbye"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "see ya"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "cancel"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "stop"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "no"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "that would be all thanks"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "stop talking"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "that would be all"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "that's all for today"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "no thanks"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "go away"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "no thanks"
+                },
+                {
+                    "language" : "en-US",
+                    "taggedText" : "that is all thank you"
+                }
+            ]
+        },
+        {
+            "uniqueName" : "fallback",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "I'm sorry didn't quite get that. Please say that again."
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : []
+        },
+        {
+            "uniqueName" : "collect_fallback",
+            "actions" : {
+                "actions" : [
+                    {
+                        "say" : "Looks like I'm having trouble. Apologies for that. Let's start again, how can I help you today?"
+                    },
+                    { "listen" : true }
+                ]
+            },
+            "fields" : [],
+            "samples" : []
+        }
+    ],
+    "modelBuild" : {
+        "uniqueName" : "Mos-Eisley-Cantina_14-9-2020_9.55.44am"
+    }
+}
