@@ -27,8 +27,7 @@ In this sample project we will use only one Function to display dynamic content 
 * After you are in the Service page click on `+Add` to add the new Function. You can leave it as "Protected" mode which means that it can be used through Twilio and not externally
 * Copy paste the code from the resources in this repo `handle-booking.js`
 * Click `Save` and then `Deploy All`
-* You should have something like the screen below. Notice the green tick next to the function name which means the changes have been applied
-<insert image>
+* You should be good to go. Notice the green tick next to the function name which means the changes have been applied
 * Finally, copy somewhere the URL of the Function (`Copy URL` option) as it will be used later
 
 ### Create the TwiML Bin
@@ -36,6 +35,9 @@ In this sample project we use a simple TwiML Bin to simulate the handoff-to-agen
 
 * Go to https://www.twilio.com/console/twiml-bins and create a new TwiML Bin
 * Paste the following code in, replacing the values in the placeholders. In this case we set our personal number as the "agent" that the call will be sent to, just to prove the handoff flow
+* As for the Twilio Number: Your Trial account comes with a Twilio Number, so you can grab that from here https://www.twilio.com/console/phone-numbers/incoming
+
+Make sure that your numbers always are in E.164 format. Find information here https://www.twilio.com/docs/glossary/what-e164
 ```js
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
