@@ -25,8 +25,8 @@ In this sample project we will use only one Function to display dynamic content 
 * Go to https://www.twilio.com/console/functions/overview (Note: You are seeing the v2.0 of Functions which at the time of writing is our brand new format!)
 * Click on "Create Service" to create your service that will host your function file (and any other files you want to add later)
 * After you are in the Service page click on "+Add" to add the new Function. You can leave it as "Protected" mode which means that it can be used through Twilio and not externally
-* Copy paste the code from the resources in this repo "bot.js"
-* Click Save and Deploy All
+* Copy paste the code from the resources in this repo "handle-booking.js"
+* Click Save and then Deploy All
 * You should have something like the screen below. Notice the green tick next to the function name which means the changes have been applied
 <insert image>
 * Finally, copy somewhere the URL of the Function ("Copy URL" option) as it will be used later
@@ -35,7 +35,7 @@ In this sample project we will use only one Function to display dynamic content 
 In this sample project we use a simple TwiML Bin to simulate the handoff-to-agent functionality.
 
 * Go to https://www.twilio.com/console/twiml-bins and create a new TwiML Bin
-* Paste the following code in, using the values in the placeholders
+* Paste the following code in, replacing the values in the placeholders. In this case we set our personal number as the "agent" that the call will be sent to, just to prove the handoff flow
 ```js
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
