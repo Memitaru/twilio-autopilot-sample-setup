@@ -45,7 +45,7 @@ In this sample project we use a simple TwiML Bin to simulate the handoff-to-agen
 </Response>
 ```
 
-### Create the Bot via JSON (optional - using the Twilio CLI)
+###  Option 1: Create the Bot via JSON using Twilio CLI
 In case you have installed the CLI (recommended), you can directly import the `bot.json` found in the resources of this repo
 
 Make sure you change the following in the JSON body of the bot:
@@ -54,3 +54,9 @@ Make sure you change the following in the JSON body of the bot:
 
 Then you can create the bot using the Autopilot CLI
 `twilio autopilot:create -s /path/of/json`
+
+### Option 2: Create the Bot from the Twilio Console
+You can fully create and manage the bot from the Twilio Console. Here are the steps to start with a basic one:
+
+* Go to https://www.twilio.com/console/autopilot and choose if you will create the Bot via a Template or From Scratch. We will add some tasks either way
+* 
